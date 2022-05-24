@@ -9,7 +9,7 @@ const App=()=> {
       alanBtn({
         key: alanKey,
         onCommand: ({ command,articles }) => {
-          if (command === 'newHeadLines') {
+          if (command === 'newHeadlines') {
             console.log(articles);
           }
         }
