@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.css';
+import { useLayoutEffect } from 'react';
+import alanBtn from "@alan-ai/alan-sdk-web";
+const alanKey='9fafd847cbf4a5e9529f3d2462ad5e082e956eca572e1d8b807a3e2338fdd0dc/stage';
+const App=()=> {
+  useLayoutEffect(() => {
+    function updateScreen(time) {
+      alanBtn({
+        key: alanKey,
+        onCommand: ({ command,articles }) => {
+          if (command === 'newHeadLines') {
+            console.log(articles);
+          }
+        }
+      })
+    }
+
+    requestAnimationFrame(updateScreen);
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>ALAN AI News App</h1>
     </div>
   );
 }
